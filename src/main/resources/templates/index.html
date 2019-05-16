@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+    <title>Title</title>
+</head>
+<body>
+    <form action="/userController/getUserByUsernameAndPassword" method="post">
+        用户名：<input type="text" name="username"/><br>
+        密码：<input type="text" name="password"/><br>
+        <a href="userController/toRegister">注册</a>
+        <a href="userController/toForgetPwd">忘记密码？</a><br>
+        <input type="submit" value="登录"/>
+    </form>
+</body>
+</html>

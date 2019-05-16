@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script type="text/javascript">
+        function createCode(){
+            var email = $("#email").val();
+            if (email != ""){
+                $("#code").load("/userController/createNumber?email="+email);
+                alert("请登录邮箱接收验证码！");
+            }
+            else {
+                alert("邮箱不能为空");
+            }
+        }
+    </script>
+</head>
+<body>
+    <p style="color: red"><span th:text="${msg }"></span></p>
+    <form action="/userController/addUser" method="post">
+        用户名：<input type="text" name="username"/><br>
+        密码：<input type="text" name="password"/><br>
+        邮箱：<input type="text" id="email" name="email"/><br>
+        验证码：<input style="width: 60px;" type="text" name="code"/>&nbsp;&nbsp;<input id="code" onclick="createCode()" type="button" value="发送验证码"/><br>
+        <input type="submit" value="注册"/>
+    </form>
+</body>
+</html>

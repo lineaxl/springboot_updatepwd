@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script type="text/javascript">
+        var isexist = true;
+        function isUser(){
+            var username = $("#username").val();
+            $.post("/userController/isUser?username="+username,function(data){
+                if(data == 0){
+                    $("#span").html("用户不存在，请重新输入");
+                    isexist = false;
+                }
+                else{
+                    $("#span").html("");
+                    isexist = true;
+                }
+            },"json");
+        }
+        function isExist() {
+            return isexist;
+        }
+    </script>
+</head>
+<body>
+<form action="/userController/sendController" method="post" onsubmit="return isExist()">
+    请输入要找回密码的账号：<input type="text" id="username" onblur="isUser()" name="username"/><span style="color:red " id="span"></span><br>
+    <input type="submit" value="找回密码"/>
+</form>
+</body>
+</html>
